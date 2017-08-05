@@ -1,0 +1,16 @@
+@import 'partials/setup';
+@import 'partials/search';
+
+body {
+	background-image: url(../assets/starwars.png);
+}
+
+h1 {
+	color: #f7df00;
+	text-transform: uppercase;
+	font-size: 50px;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+

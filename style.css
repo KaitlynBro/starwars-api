@@ -1,0 +1,22 @@
+body {
+	background-image: url(assets/starwars.png);
+}
+
+h1 {
+	color: #f7df00;
+	text-transform: uppercase;
+	font-size: 50px;
+	text-align: center;
+	letter-spacing: 1px;
+}
+
+#searchInputs {
+	background-color: white;
+	border: 30px solid #d8000e;
+	width: 80%;
+    margin: 0 auto;
+    padding: 40px;
+}
+#starwarsContainer {
+	font-size: 20px;
+}

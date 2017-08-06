@@ -4,19 +4,21 @@
 	<meta charset="UTF-8">
 	<title>Star Wars API - Serind Labs</title>
 	<link rel="stylesheet" href="styles/style.css">
+	<script src="https://use.fontawesome.com/b13619d841.js"></script>
 </head>
 <body>
 <header>
-	<h1>Starwars</h1>
+	<img src="../assets/sw.png" alt="" id="heading">
+	<p class="arrow"><i class="fa fa-arrow-down" aria-hidden="true"></i></p>
 </header>
 
 <section id="searchInputs">
 	<div id="starwarsContainer">
 		<h2>I'm looking for:</h2>
 			<ul class="inputs">
-				<li><input type="radio" value="People" id="people">People</li>
-				<li><input type="radio" value="Planets" id="planets">Planets</li>
-				<li><input type="radio" value="Starships" id="starships">Starships</li>
+				<li><input type="radio" name="radio" id="people">People</li>
+				<li><input type="radio" name="radio" id="planets">Planets</li>
+				<li><input type="radio" name="radio" id="starships">Starships</li>
 			</ul>
 		<input type="search" id="searchMe" placeholder="Search">
 		<button id="go">Go!</button>
@@ -24,14 +26,11 @@
 </section>
 
 <section id="resultsContainer">
-	<div>
-		<ul class="resultsInfo"></ul>
-	</div>
+	<ul class="resultsInfo"></ul>
 </section>
-
 <button id="refresh">Refresh Page</button>
 
-
+ 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="app.js"></script>

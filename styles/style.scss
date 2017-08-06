@@ -1,16 +1,46 @@
 @import 'partials/setup';
 @import 'partials/search';
+@import 'partials/results';
 
+
+//general styles
 body {
 	background-image: url(../assets/starwars.png);
 }
 
-h1 {
-	color: #f7df00;
-	text-transform: uppercase;
-	font-size: 50px;
-	text-align: center;
-	letter-spacing: 1px;
+header {
+	background-image: url(../assets/bg.png);
+	height: 100vh;
+	background-position: center center;
+	#heading {
+		display: block;
+    	margin: 0 auto;
+    	position: relative;
+    	top: 10%;
+	}
 }
 
+.arrow {
+	display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 10%;
+    left: 50%;
+    .fa {
+    	color: #f8d731;
+    	font-size: 50px;
+    }
+}
 
+//refresh button at bottom of page
+#refresh {
+	background-color: transparent;
+    padding: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: yellow;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

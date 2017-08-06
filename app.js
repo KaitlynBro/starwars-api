@@ -46,7 +46,7 @@ starwars.display = function(data) {
 		            	<li><a href="#" class="clickMe"><em><strong>Films:</strong></em> ${object.films}</a></li> 
 		            	<li><a href="#" class="clickMe"><em><strong>Gender:</strong></em> ${object.gender}</a></li> 
 		            	<li><a href="#" class="clickMe"><em><strong>Hair Colour:</strong></em> ${object.hair_color}</a></li> 
-		            	<li><a href="#" class="clickMe"><em><strong>Height:</strong></em> ${object.height}</a></li> 
+		            	<li><a href="#" class="clickMe"><em><strong>Height:</strong></em> ${object.height}"</a></li> 
 		            	<li><a href="#" class="clickMe"><em><strong>Homeworld:</strong></em> ${object.homeworld}</a></li> 
 		            	<li><a href="#" class="clickMe"><em><strong>Mass:</strong></em> ${object.mass}</a></li> 
 		            	<li><a href="#" class="clickMe"><em><strong>Skin Color:</strong></em> ${object.skin_color}</a></li> 

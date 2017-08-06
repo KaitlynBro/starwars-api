@@ -193,6 +193,9 @@ input[type=radio] {
 body {
   background-image: url(../assets/starwars.png); }
 
+.wrapper {
+  max-width: 90%; }
+
 header {
   background-image: url(../assets/bg.png);
   background-repeat: no-repeat;
@@ -211,8 +214,9 @@ h1 {
 .arrow {
   display: inline-block;
   margin: 0 auto;
+  margin-top: 90px;
   position: relative;
-  top: 10%;
+  top: 14%;
   left: 50%; }
   .arrow .fa {
     color: #f8d731;
@@ -239,7 +243,7 @@ h1 {
     top: 10%;
     left: 20%;
     color: white;
-    font-size: 75px; }
+    font-size: 50px; }
   .arrow {
     display: none; }
   #searchInputs {

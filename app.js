@@ -96,7 +96,7 @@ starwars.displayPlanets = function(data) {
 	       // $.each(data, function(index, results) {
 	            //const planet = results.name;
 	            document.getElementById('resultsContainer').style.backgroundColor = 'white';
-	            document.getElementById('resultsContainer').style.border = '30px solid #d8000e'
+	            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
 	            $('#resultsContainer').append(`
 	            	<div class="queryResults"> 
 	            		<ul>
@@ -151,46 +151,40 @@ starwars.displayStarships = function(data) {
 	        document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
 		    $('#resultsContainer').append(`<p>Sorry, no results found!</p>`);
 		} else {
-	        //$.each(data, function(index, results) {
-	        	$('#searchInputs').hide();
-	            //const starships = object.name;
-	            document.getElementById('resultsContainer').style.backgroundColor = 'white';
-	            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
-	            $('#resultsContainer').append(`<div class="queryResults"> 
-	            		<ul>
-		            		<h2>${object.name}</h2> 
-		            		<li><a href="#" class="clickMe"><em><strong>MGLT:</strong></em> ${object.MGLT}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Cargo Capacity:</strong></em> ${object.cargo_capacity}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Consumables:</strong></em> ${object.consumables}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Cost in Credits:</strong></em> ${object.cost_in_credits}</a></li> 
-		            		<li><a object="#" class="clickMe"><em><strong>Crew:</strong></em> ${object.crew}</a></li>  
-		            		<li><a href="#" class="clickMe"><em><strong>Hyperdrive Rating:</strong></em> ${object.hyperdrive_rating}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Length:</strong></em> ${object.length}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Manufacturer:</strong></em> ${object.manufacturer}</a></li>
-		            		<li><a href="#" class="clickMe"><em><strong>Max Atmosphering Speed:</strong></em> ${object.max_atmosphering_speed}</a></li>
-		            		<li><a href="#" class="clickMe"><em><strong>Model:</strong></em> ${object.model}</a></li>
-		            		<li><a href="#" class="clickMe"><em><strong>Passengers:</strong></em> ${object.passengers}</a></li>
-		            		<li><a href="#" class="clickMe"><em><strong>Pilots:</strong></em> ${object.pilots}</a></li>
-		            		<li><a href="#" class="clickMe"><em><strong>Starship Class:</strong></em> ${object.starship_class}</a></li>
-		            	</ul>
-	            	</div>`); 
-	            	$('.clickMe').on('click', function() {
-			        	let $this = this;
-			        	$('#resultsContainer').empty();
-			        	$('#resultsContainer').append(`<li>${$this}</li>`);
-		        	})   
-	        //});
+        	$('#searchInputs').hide();
+            document.getElementById('resultsContainer').style.backgroundColor = 'white';
+            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
+            $('#resultsContainer').append(`<div class="queryResults"> 
+            		<ul>
+	            		<h2>${object.name}</h2> 
+	            		<li><a href="#" class="clickMe"><em><strong>MGLT:</strong></em> ${object.MGLT}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Cargo Capacity:</strong></em> ${object.cargo_capacity}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Consumables:</strong></em> ${object.consumables}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Cost in Credits:</strong></em> ${object.cost_in_credits}</a></li> 
+	            		<li><a object="#" class="clickMe"><em><strong>Crew:</strong></em> ${object.crew}</a></li>  
+	            		<li><a href="#" class="clickMe"><em><strong>Hyperdrive Rating:</strong></em> ${object.hyperdrive_rating}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Length:</strong></em> ${object.length}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Manufacturer:</strong></em> ${object.manufacturer}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Max Atmosphering Speed:</strong></em> ${object.max_atmosphering_speed}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Model:</strong></em> ${object.model}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Passengers:</strong></em> ${object.passengers}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Pilots:</strong></em> ${object.pilots}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Starship Class:</strong></em> ${object.starship_class}</a></li>
+	            	</ul>
+            	</div>`); 
+            	$('.clickMe').on('click', function() {
+		        	let $this = this;
+		        	$('#resultsContainer').empty();
+		        	$('#resultsContainer').append(`<li>${$this}</li>`);
+	        	})   
 		}
 	});
 }
 
 $('#refresh').on('click', function() {
+	$('#resultsContainer').empty();
 	location.href = location.href;
 })
-
-$(function(){
-	starwars.init();
-});
 
 //smooth scroll so results display on screen in a more obvious manner
 $(".fa").on('click', function() {
@@ -199,9 +193,13 @@ $(".fa").on('click', function() {
         'slow');
 });
 
+$(function(){
+	starwars.init();
+});
+
+
+
 //problems:
 //1. people and planets both coming up even when only clicking on one radio button
 //2. need to figure out how to empty container wen new option is pressed
-//3. need to figure out how to stop user from being able to press 2 radio bttons
 //4, need to turn data that is in arrays (like in 'films') into actual film titles, not the url
-//5 get refresh butto to work

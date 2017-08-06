@@ -1,6 +1,7 @@
 @import 'partials/setup';
 @import 'partials/search';
 @import 'partials/results';
+@import 'partials/queries';
 
 
 //general styles
@@ -10,8 +11,10 @@ body {
 
 header {
 	background-image: url(../assets/bg.png);
+	background-repeat: no-repeat;
 	height: 100vh;
 	background-position: center center;
+	max-width: 100%;
 	#heading {
 		display: block;
     	margin: 0 auto;
@@ -20,8 +23,12 @@ header {
 	}
 }
 
+h1 {
+	display: none;
+}
+
 .arrow {
-	display: block;
+	display: inline-block;
     margin: 0 auto;
     position: relative;
     top: 10%;
@@ -44,3 +51,49 @@ header {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+@media (max-width: 700px) {
+	img#heading {
+		display: none;
+	}
+	h1 {
+		display: inline-block;
+		margin-top: 0;
+    	position: relative;
+    	top: 10%;
+    	left: 20%;
+	    color: white;
+	    font-size: 75px;
+	}
+	.arrow {
+		display: none;
+	}
+	//search section begins
+	#searchInputs {
+		width: 100%;
+	}
+	//making radio buttons larger for fingers to more easily press them on mobile
+	input[type=radio] {
+	    border: 1px solid black;
+	    width: 20%;
+	    height: 2em;
+	}
+	//ensuring border is on seach bar in mobile as sometimes mobile screens remove border
+	input[type=search] {
+		border: 1px solid black;
+    	border-radius: 4px;
+	}
+	button#go {
+		border: 1px solid black;
+    	border-radius: 4px;
+    	background-color: transparent;
+	}
+	//results section begins
+	#resultsContainer {
+		width: 100%;
+	}
+	.queryResults {
+		width: 100%;
+	}
+}
+    

@@ -212,16 +212,15 @@ starwars.displayFilms = function(data) {
             document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
             $('#resultsContainer').append(` <div class="queryResults"> 
             		<ul>
-	            		<h2>${object.title}</h2> 
-	            		<li>${object.opening_crawl}</li>
-	            		<li>${object.director}</li>
-	            		<li>Director: ${object.director}</li>
-	            		<li>Producer: ${object.producer}</li>
-	            		<li>Characters: ${object.characters}</li>
-	            		<li>Planets: ${object.planets}</li>
-	            		<li>Species: ${object.species}</li>
-	            		<li>Starships: ${object.starships}</li>
-	            		<li>Vehicles: ${object.vehicles}</li>
+	            		<h2><a href="#" class="clickMe">${object.title}</a></h2> 
+	            		<li><a href="#" class="clickMe">${object.opening_crawl}</li>
+	            		<li><a href="#" class="clickMe"><em><strong>Director:</strong></em> ${object.director}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Producer:</strong></em> ${object.producer}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Characters:</strong></em> ${object.characters}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Planets:</strong></em> ${object.planets}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Species:</strong></em> ${object.species}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Starships:</strong></em> ${object.starships}</a></li>
+	            		<li><a href="#" class="clickMe"><em><strong>Vehicles:</strong></em> ${object.vehicles}</a></li>
 	            	</ul>
 	            </div>`);
             $('.clickMe').on('click',  function() {

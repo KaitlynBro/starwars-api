@@ -1,16 +1,17 @@
+//creating empty object to hold js in
 const starwars = {}
 
+//storing all function into my init 
 starwars.init = function(){
 	starwars.getStarwars();
 	starwars.getPlanets();
 	starwars.getStarships();
-	starwars.getFilms();
 }
 
 //on click of search button, make ajax request to access Starwars API data for people
 starwars.getStarwars = function(){
 	$('#go').on('click', function() {
-		//document.getElementById('searchInputs').style.display = 'none';
+		//on click, store users input into variable, and store radio button of 'people' into variable
 		const usersInput = document.getElementById("searchMe").value;
 		const people = document.getElementById('people');
 		$.ajax({
@@ -19,7 +20,6 @@ starwars.getStarwars = function(){
 		  dataType: 'json',
 		  //once I have data, then display results with starwars.display function
 		}).then(function(res) {
-			//console.log(res)
 			starwars.display(res.results)
 		});
 	})
@@ -27,14 +27,17 @@ starwars.getStarwars = function(){
 
 
 starwars.display = function(data) {
+	//loop over recieved data
 	$.each(data, function(index, object) {
-		console.log('menu loop function');
 		let $this = this;
+		//if there is no data, append message to let user know
 		if(data.length === 0) {
 			document.getElementById('resultsContainer').style.backgroundColor = 'white';
 	        document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
 		    $('#resultsContainer').append(`<p>Sorry, no results found!</p>`);
 		} else {
+			//if there is data, append data into a div, in a list
+			//each list item will hold key value pairs of the object being returned
             const character = object.name;
             document.getElementById('resultsContainer').style.backgroundColor = 'white';
             document.getElementById('resultsContainer').style.border = '30px solid #f8d731';
@@ -53,6 +56,7 @@ starwars.display = function(data) {
 	            	<li><a href="#" class="clickMe"><em><strong>Species:</strong></em> ${object.species}</a></li> 
 	            	<li><a href="#" class="clickMe"><em><strong>Starships:</strong></em> ${object.starships}</a></li> 
 	            	<li><a href="#" class="clickMe"><em><strong>Vehicles:</strong></em> ${object.vehicles}</a></li></ul></div>`);
+            //on click of a list item, empty the results container and append what user just clicked on
 	        $('.clickMe').on('click', function() {
 	        	let $this = this;
 	        	$('#resultsContainer').empty();
@@ -65,7 +69,7 @@ starwars.display = function(data) {
 //on click of search button, make ajax request to access Starwars API data for planets
 starwars.getPlanets = function(){
 	$('#go').on('click', function() {
-		//document.getElementById('#searchInputs').style.display = 'none';
+		//on click, store users input into variable, and store radio button of 'planets' into variable
 		$('#resultsContainer').empty();
 		const usersInput = document.getElementById("searchMe").value;
 		const planets = document.getElementById('planets');
@@ -75,7 +79,6 @@ starwars.getPlanets = function(){
 		  dataType: 'json',
 		  //once I have data, then display results with starwars.display function
 		}).then(function(res) {
-			//console.log(res)
 			starwars.displayPlanets(res.results)
 		});
 	})
@@ -83,40 +86,40 @@ starwars.getPlanets = function(){
 
 
 starwars.displayPlanets = function(data) {
-	//console.log(data)
+	//loop over recieved data
 	$.each(data, function(index, object) {
 		let $this = this;
-		//let planet = Object.homeworld;
+		//if there is no data, append message to let user know
 		if(data.length === 0) {
 			document.getElementById('resultsContainer').style.backgroundColor = 'white';
-	            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
+	        document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
 		    $('#resultsContainer').append(`<p>Sorry, no results found!</p>`);
 		} else {
-	       // $.each(data, function(index, results) {
-	            //const planet = results.name;
-	            document.getElementById('resultsContainer').style.backgroundColor = 'white';
-	            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
-	            $('#resultsContainer').append(`
-	            	<div class="queryResults"> 
-	            		<ul>
-		            		<h2>${object.name}</h2> 
-		            		<li><a href="#" class="clickMe"><em><strong>Climate:</strong></em> ${object.climate}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Created:</strong></em> ${object.created}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Diameter:</strong></em> ${object.diameter}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Edited:</strong></em> ${object.edited}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Films:</strong></em> ${object.films}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Gravity:</strong></em> ${object.gravity}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Rotation Period:</strong></em> ${object.rotation_period}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Surface Water:</strong></em> ${object.surface_water}</a></li> 
-		            		<li><a href="#" class="clickMe"><em><strong>Terrain:</strong></em> ${object.terrain}</a></li>
-		            	</ul>
-		            </div>`);
-	            $('.clickMe').on('click', function() {
-		        	let $this = this;
-		        	$('#resultsContainer').empty();
-		        	$('#resultsContainer').append($this);
-		        }) 
-	        //});
+			//if there is data, append data into a div, in a list
+			//each list item will hold key value pairs of the object being returned
+            document.getElementById('resultsContainer').style.backgroundColor = 'white';
+            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
+            $('#resultsContainer').append(`
+            	<div class="queryResults"> 
+            		<ul>
+	            		<h2>${object.name}</h2> 
+	            		<li><a href="#" class="clickMe"><em><strong>Climate:</strong></em> ${object.climate}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Created:</strong></em> ${object.created}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Diameter:</strong></em> ${object.diameter}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Edited:</strong></em> ${object.edited}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Films:</strong></em> ${object.films}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Gravity:</strong></em> ${object.gravity}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Rotation Period:</strong></em> ${object.rotation_period}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Surface Water:</strong></em> ${object.surface_water}</a></li> 
+	            		<li><a href="#" class="clickMe"><em><strong>Terrain:</strong></em> ${object.terrain}</a></li>
+	            	</ul>
+	            </div>`);
+            //on click of a list item, empty the results container and append what user just clicked on
+            $('.clickMe').on('click', function() {
+	        	let $this = this;
+	        	$('#resultsContainer').empty();
+	        	$('#resultsContainer').append($this);
+	        }) 
 		}
 	});
 }
@@ -124,8 +127,7 @@ starwars.displayPlanets = function(data) {
 //on click of search button, make ajax request to access Starwars API data for starships
 starwars.getStarships = function(){
 	$('#go').on('click', function() {
-		//document.getElementById('#searchInputs').style.display = 'none';
-		$('#resultsContainer').empty();
+		//on click, store users input into variable, and store radio button of 'starships' into variable
 		const usersInput = document.getElementById("searchMe").value;
 		const starships = document.getElementById('starships');
 		$.ajax({
@@ -142,14 +144,18 @@ starwars.getStarships = function(){
 
 
 starwars.displayStarships = function(data) {
+	//loop over recieved data
 	$.each(data, function(index, object) {
 		console.log('menu loop function');
 		let $this = this;
+		//if there is no data, append message to let user know
 		if(data.length === 0) {
 			document.getElementById('resultsContainer').style.backgroundColor = 'white';
 	        document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
 		    $('#resultsContainer').append(`<p>Sorry, no results found!</p>`);
 		} else {
+			//if there is data, append data into a div, in a list
+			//each list item will hold key value pairs of the object being returned
         	$('#searchInputs').hide();
             document.getElementById('resultsContainer').style.backgroundColor = 'white';
             document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
@@ -171,6 +177,7 @@ starwars.displayStarships = function(data) {
 	            		<li><a href="#" class="clickMe"><em><strong>Starship Class:</strong></em> ${object.starship_class}</a></li>
 	            	</ul>
             	</div>`); 
+            	//on click of a list item, empty the results container and append what user just clicked on
             	$('.clickMe').on('click', function() {
 		        	let $this = this;
 		        	$('#resultsContainer').empty();
@@ -181,58 +188,8 @@ starwars.displayStarships = function(data) {
 }
 
 
-starwars.getFilms = function(){
-	$('#go').on('click', function() {
-		//document.getElementById('searchInputs').style.display = 'none';
-		const usersInput = document.getElementById("searchMe").value;
-		const films = document.getElementById('films');
-		$.ajax({
-		  url: `https://swapi.co/api/films/?search=${usersInput}`,
-		  method: 'GET',
-		  dataType: 'json',
-		  //once I have data, then display results with starwars.display function
-		}).then(function(res) {
-			console.log(res)
-			starwars.displayFilms(res.results)
-		});
-	})
-};
 
-starwars.displayFilms = function(data) {
-	console.log(this)
-	$.each(data, function(index, object) {
-		let $this = this;
-		console.log(object)
-		if(data.length === 0) {
-			document.getElementById('resultsContainer').style.backgroundColor = 'white';
-	        document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
-		    $('#resultsContainer').append(`<p>Sorry, no results found!</p>`);
-		} else {
-            document.getElementById('resultsContainer').style.backgroundColor = 'white';
-            document.getElementById('resultsContainer').style.border = '30px solid #f8d731'
-            $('#resultsContainer').append(` <div class="queryResults"> 
-            		<ul>
-	            		<h2><a href="#" class="clickMe">${object.title}</a></h2> 
-	            		<li><a href="#" class="clickMe">${object.opening_crawl}</li>
-	            		<li><a href="#" class="clickMe"><em><strong>Director:</strong></em> ${object.director}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Producer:</strong></em> ${object.producer}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Characters:</strong></em> ${object.characters}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Planets:</strong></em> ${object.planets}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Species:</strong></em> ${object.species}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Starships:</strong></em> ${object.starships}</a></li>
-	            		<li><a href="#" class="clickMe"><em><strong>Vehicles:</strong></em> ${object.vehicles}</a></li>
-	            	</ul>
-	            </div>`);
-            $('.clickMe').on('click',  function() {
-	        	let $this = this;
-	        	$('#resultsContainer').empty();
-	        	$('#resultsContainer').append($this);
-	        }) 
-		}
-	});
-}
-
-
+//refresh button
 $('#refresh').on('click', function() {
 	$('#resultsContainer').empty();
 	location.href = location.href;
@@ -248,11 +205,3 @@ $(".fa").on('click', function() {
 $(function(){
 	starwars.init();
 });
-
-
-
-//problems:
-//1. people and planets both coming up even when only clicking on one radio button
-//2. need to figure out how to empty container wen new option is pressed
-//4, need to turn data that is in arrays (like in 'films') into actual film titles, not the url
-//5. i have users input at end of url of each ajax call but dont think ive actually created usersinput var yet
